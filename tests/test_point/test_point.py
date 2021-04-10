@@ -30,6 +30,17 @@ def test_point_setters():
     assert p.y == 22.0
 
 
+@pytest.mark.parametrize('value, exception_class', [
+    (Point(), TypeError),
+    ('asdfg', ValueError)
+])
+def test_setters_exception(value, exception_class):
+    p = Point()
+
+    with pytest.raises(exception_class):
+        p.x = value
+
+
 def test_point_to_string():
     p = Point()
 
